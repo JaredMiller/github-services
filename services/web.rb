@@ -48,6 +48,8 @@ class Service::Web < Service
     end
 
     http_post url, body
+  rescue Addressable::URI::InvalidURIError => boom
+    raise_config_error boom.to_s
   end
 end
 
